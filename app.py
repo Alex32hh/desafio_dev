@@ -32,6 +32,7 @@ def gelist(contents):
 @app.route("/gerdata")
 @cross_origin()
 def setFile():
+  
   return query_trans()
 
 

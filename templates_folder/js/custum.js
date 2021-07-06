@@ -38,3 +38,11 @@ function handleFileSelect(evt) {
             alert("Foi")
         } );
   }
+
+
+
+  function getRecordList(){
+    var url = "http://127.0.0.1:5000/gerdata"
+    fetch();
+
+  }
