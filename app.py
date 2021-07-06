@@ -13,15 +13,16 @@ def gelist(contents):
   
   groups = [(contents[i:i+80]) for i in range(0, len(contents), 80)]
 
-  print(len(groups))
-  # tipo = responselist[0][0]
-  # Data = responselist[0][1:9]
-  # Valor = responselist[0][9:19]
-  # CPF = responselist[0][19:30]
-  # Cart = responselist[0][30:42]
-  # Hora = responselist[0][42:48]
-  # DonoDaLoja = responselist[0][48:62]
-  # NomeLoja = responselist[2][62:81]
+  print(groups)
+  for item in groups:
+    tipo = item[0]
+    Data = item[1:9]
+    Valor = float(item[9:19]) /100.00
+    CPF = item[19:30]
+    Cart = item[30:42]
+    Hora = item[42:48]
+    DonoDaLoja = item[48:62]
+    NomeLoja = item[62:81]
 
   return "olamundo"
 
