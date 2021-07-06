@@ -23,3 +23,18 @@ function handleFileSelect(evt) {
   }
 
   document.getElementById('upload').addEventListener('change', handleFileSelect, false);
+
+
+//api end point
+  function submitfunt(){
+    const options = {
+        method: 'GET',
+        // body: JSON.stringify( params )  
+    };
+    fetch( 'http://127.0.0.1:5000/?filecontents='+fileContents, options )
+        .then( response => response.json() )
+        .then( response => {
+            // Do something with response.
+            alert("Foi")
+        } );
+  }
