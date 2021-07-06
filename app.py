@@ -20,6 +20,10 @@ NomeLoja = responselist[2][62:81]
 
 @app.route("/")
 def index():
+  return render_template("index.html",data=tipo)
+
+@app.route("/api")
+def setFile():
   return tipo
 
 if __name__ == "__main__":
