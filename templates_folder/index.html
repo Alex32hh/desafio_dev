@@ -16,11 +16,11 @@
         <div class="p-3 text-indigo-500">Upload CNAB File</div>
         <form method="post" enctype="multipart/form-data" action="http://127.0.0.1:5000/">
             <input type="file" id="upload" name="capa" accept="text/xml"  class="dropify" data-allowed-file-extensions="txt xml csv">
-            <button type="button" onClick="submitfunt()" class="w-40 p-3 mt-5 float-left rounded-xl shadow-md bg-indigo-500 text-white">Upload</button>
-            <button type="button" onClick="getRecordList()" class="w-40 p-3 mt-5 ml-5 float-left rounded-xl shadow-md bg-indigo-800 text-white">Listar transacoes</button>
+            <button type="button" onClick="submitfunt()" class="w-40 p-3 mt-5 float-left shadow-md bg-indigo-500 text-white">Upload</button>
+            <button type="button" onClick="getRecordList()" class="w-40 p-3 mt-5 ml-5 float-left shadow-md bg-indigo-800 text-white">Listar Transações</button>
         </form>
         <hr>
-        <div class="grid grid-cols-9 gap-0 mt-32 rounded-xl" id="list-item">
+        <div class="grid grid-cols-11 gap-0 mt-32 rounded-xl" id="list-item">
             <div class=" font-semibold border-2">ID</div>
             <div class=" font-semibold border-2">Tipo</div>
             <div class=" font-semibold border-2">DATA</div>
@@ -30,9 +30,21 @@
             <div class=" font-semibold border-2">Hora</div>
             <div class=" font-semibold border-2">Dono da loja</div>
             <div class=" font-semibold border-2">Nome loja</div>
+            <div class=" font-semibold border-2">Natureza</div>
+            <div class=" font-semibold border-2">Sinal</div>
+
+          </div>
+
+        <hr>
+        <div class="grid grid-cols-2 gap-0 mt-20 rounded-xl" id="list-item">
+            <div class="font-semibold border-2">Total em Conta</div>
+            <div class="border-2" id="total">2000</div>
 
           </div>
     </div>
+
+    </div>
+    
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

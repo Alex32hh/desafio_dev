@@ -9,13 +9,10 @@ app = Flask(__name__, template_folder='templates_folder')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route("/<contents>",methods = ['GET', 'POST', 'DELETE'])
+@app.route("/sendata/<contents>",methods = ['GET', 'POST', 'DELETE'])
 @cross_origin()
 def gelist(contents):
   groups = [(contents[i:i+80]) for i in range(0, len(contents), 80)]
-
-  print(groups)
-
   for item in groups:
     tipo = item[0]
     Data = item[1:9]
@@ -110,4 +107,3 @@ def insert_transactions(tipo,data,valor,cpf,cart,hora,DonoDaLoja,NomeLoja):
 
 if __name__ == "__main__":
  app.run()
- connect()
