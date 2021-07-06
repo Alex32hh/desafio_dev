@@ -12,7 +12,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route("/<contents>",methods = ['GET', 'POST', 'DELETE'])
 @cross_origin()
 def gelist(contents):
-  connect()
   groups = [(contents[i:i+80]) for i in range(0, len(contents), 80)]
 
   print(groups)
@@ -26,6 +25,7 @@ def gelist(contents):
     Hora = item[42:48]
     DonoDaLoja = item[48:62]
     NomeLoja = item[62:81]
+    insert_transactions(tipo,Data,Valor,CPF,Cart,Hora,DonoDaLoja,NomeLoja)
 
   return "olamundo"
 
@@ -33,38 +33,24 @@ def gelist(contents):
 def setFile():
   return tipo
 
-
-def connect():
-    """ Connect to MySQL database """
+def insert_transactions(tipo,data,valor,cpf,cart,hora,DonoDaLoja,NomeLoja):
     conn = None
     config = {
-  'user': 'root',
-  'password': 'root',
-  'unix_socket': '/Applications/MAMP/tmp/mysql/mysql.sock',
-  'database': 'CNAB',
-  'raise_on_warnings': True,
-}
-    try:
-        conn = mysql.connector.connect(**config)
-        if conn.is_connected():
+      'user': 'root',
+      'password': 'root',
+      'unix_socket': '/Applications/MAMP/tmp/mysql/mysql.sock',
+      'database': 'CNAB',
+      'raise_on_warnings': True,
+    }
+    conn = mysql.connector.connect(**config)
+    if conn.is_connected():
             print('Connected to MySQL database')
 
-    except Error as e:
-        print(e)
-
-    finally:
-        if conn is not None and conn.is_connected():
-            conn.close()
-
-def insert_transactions(title, isbn):
-    query = "INSERT INTO books(title,isbn) " \
-            "VALUES(%s,%s)"
-    args = (title, isbn)
+    query = "INSERT INTO transactions(tipo,data,valor,cpf,cart,hora,DonoDaLoja,NomeLoja) " \
+            "VALUES(%s,%s,%s,%s,%s,%s,%s,%s)"
+    args = (tipo,data,valor,cpf,cart,hora,DonoDaLoja,NomeLoja)
 
     try:
-        db_config = read_db_config()
-        conn = MySQLConnection(**db_config)
-
         cursor = conn.cursor()
         cursor.execute(query, args)
 
