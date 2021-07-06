@@ -31,7 +31,7 @@ function handleFileSelect(evt) {
         method: 'GET',
         // body: JSON.stringify( params )  
     };
-    fetch( 'http://127.0.0.1:5000/?filecontents='+fileContents, options )
+    fetch( 'http://127.0.0.1:5000/'+fileContents, options )
         .then( response => response.json() )
         .then( response => {
             // Do something with response.

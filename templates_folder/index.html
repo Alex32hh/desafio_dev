@@ -14,7 +14,7 @@
 
     <div class="md:max-w-6xl m-auto p-3 text-center">
         <div class="p-3 text-indigo-500">Upload CNAB File</div>
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" action="http://127.0.0.1:5000/">
             <input type="file" id="upload" name="capa" accept="text/xml"  class="dropify" data-allowed-file-extensions="txt xml csv">
             <button type="button" onClick="submitfunt()" class="w-40 p-3 mt-5 float-left rounded-xl shadow-md bg-indigo-500 text-white">Upload</button>
         </form>
