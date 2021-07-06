@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, flash
-import re
+import json
 import pandas as pd
 from flask_cors import CORS, cross_origin
 import mysql.connector
@@ -30,8 +30,41 @@ def gelist(contents):
   return "olamundo"
 
 @app.route("/gerdata")
+@cross_origin()
 def setFile():
-  return tipo
+  return query_trans()
+
+
+def query_trans():
+    try:
+        conn = None
+        config = {
+          'user': 'root',
+          'password': 'root',
+          'unix_socket': '/Applications/MAMP/tmp/mysql/mysql.sock',
+          'database': 'CNAB',
+          'raise_on_warnings': True,
+        }
+        conn = mysql.connector.connect(**config)
+        if conn.is_connected():
+            print('Connected to MySQL database')
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM transactions")
+
+        row = cursor.fetchall()
+
+        return json.dumps(row)
+
+    except Error as e:
+        print(e)
+
+    finally:
+        cursor.close()
+        conn.close()
+
+
+
+
 
 def insert_transactions(tipo,data,valor,cpf,cart,hora,DonoDaLoja,NomeLoja):
     conn = None
