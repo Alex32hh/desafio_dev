@@ -18,9 +18,9 @@ Hora = responselist[0][42:48]
 DonoDaLoja = responselist[0][48:62]
 NomeLoja = responselist[2][62:81]
 
-@app.route("/")
+@app.route("/",methods=['POST','GET'])
 def index():
-  return render_template("index.html",data=tipo)
+  return DonoDaLoja
 
 @app.route("/api")
 def setFile():

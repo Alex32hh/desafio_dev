@@ -12,10 +12,11 @@
 </head>
 <body>
 
-    <div class="md:max-w-6xl m-auto">
-        <div class="">Upload CNBA</div>
-        <form action="" method="post">
-            <input type="file" name="capa"  class="dropify" data-allowed-file-extensions="jpg png">
+    <div class="md:max-w-6xl m-auto p-3 text-center">
+        <div class="p-3 text-indigo-500">Upload CNAB File</div>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" id="upload" name="capa" accept="text/xml"  class="dropify" data-allowed-file-extensions="txt xml">
+            <button type="submit" onClick="submitfunt()" class="w-40 p-3 mt-5 float-left rounded-xl shadow-md bg-indigo-500 text-white">Upload</button>
         </form>
     </div>
 
