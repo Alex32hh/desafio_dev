@@ -52,9 +52,14 @@ def query_trans():
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM transactions")
 
-        row = cursor.fetchall()
+        # row = cursor.fetchall()
+        row_headers=[x[0] for x in cursor.description] #this will extract row headers
+        rv = cursor.fetchall()
+        json_data=[]
+        for result in rv:
+              json_data.append(dict(zip(row_headers,result)))
 
-        return json.dumps(row)
+        return json.dumps(json_data)
 
     except Error as e:
         print(e)

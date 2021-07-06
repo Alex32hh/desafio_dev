@@ -42,7 +42,27 @@ function handleFileSelect(evt) {
 
 
   function getRecordList(){
+    var jsonDetails = "";
+    
     var url = "http://127.0.0.1:5000/gerdata"
-    fetch();
+    fetch(url).then(res => res.json()).then(data => {
+        var index = data.length;
+        for (var i =0; i < index;i++){
+            $('#list-item').append('<div class="text-sm border-2">'+data[i]['id']+'</div>');
+            $('#list-item').append('<div class="text-sm border-2">'+data[i]['tipo']+'</div>');
+            $('#list-item').append('<div class="text-sm border-2">'+data[i]['data']+'</div>');
+            $('#list-item').append('<div class="text-sm border-2">'+data[i]['valor']+'</div>');
+            $('#list-item').append('<div class="text-sm border-2">'+data[i]['cpf']+'</div>');
+            $('#list-item').append('<div class="text-sm border-2">'+data[i]['cart']+'</div>');
+            $('#list-item').append('<div class="text-sm border-2">'+data[i]['hora']+'</div>');
+            $('#list-item').append('<div class="text-sm border-2">'+data[i]['DonoDaLoja']+'</div>');
+            $('#list-item').append('<div class="text-sm border-2">'+data[i]['NomeLoja']+'</div>');
+       }
+        
+      
+
+    }).catch(function(error) {
+        alert(error);
+    });
 
   }
